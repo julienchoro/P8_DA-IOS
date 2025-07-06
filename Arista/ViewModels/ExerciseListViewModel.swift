@@ -27,6 +27,10 @@ class ExerciseListViewModel: ObservableObject {
             
         }
     }
+    
+    func reload() {
+        fetchExercises()
+    }
 }
 
 //struct FakeExercise: Identifiable {
