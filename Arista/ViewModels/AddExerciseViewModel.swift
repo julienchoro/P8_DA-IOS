@@ -9,10 +9,17 @@ import Foundation
 import CoreData
 
 class AddExerciseViewModel: ObservableObject {
-    @Published var category: String = ""
+    let catégories = ["Football", "Natation", "Running", "Marche", "Cyclisme", "Fitness", "Yoga", "Musculation"]
+    @Published var category: String = "Running"
     @Published var startTime: Date = Date()
-    @Published var duration: Int = 0
-    @Published var intensity: Int = 0
+    @Published var duration: Int = 30
+    @Published var intensity: Int = 5
+    
+    var isFormValid: Bool {
+        !category.isEmpty &&
+        duration > 0 &&
+        startTime <= Date()
+    }
 
     private var viewContext: NSManagedObjectContext
 
@@ -28,6 +35,7 @@ class AddExerciseViewModel: ObservableObject {
                                                                          startDate: startTime)
             return true
         } catch {
+            print("Erreur lors de l'ajout")
             return false
         }
     }

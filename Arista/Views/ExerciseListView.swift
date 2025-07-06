@@ -47,13 +47,19 @@ struct ExerciseListView: View {
         case "Football":
             return "sportscourt"
         case "Natation":
-            return "waveform.path.ecg"
+            return "figure.pool.swim"
         case "Running":
             return "figure.run"
         case "Marche":
             return "figure.walk"
         case "Cyclisme":
             return "bicycle"
+        case "Fitness":
+            return "figure.flexibility"
+        case "Yoga":
+            return "figure.mind.and.body"
+        case "Musculation":
+            return "dumbbell"
         default:
             return "questionmark"
         }
