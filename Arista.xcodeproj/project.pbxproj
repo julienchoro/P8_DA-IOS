@@ -26,6 +26,7 @@
 		55BB4B662E19929F00311144 /* SleepRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BB4B652E19929F00311144 /* SleepRepository.swift */; };
 		55BB4B6C2E19936B00311144 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BB4B6B2E19936B00311144 /* UserRepository.swift */; };
 		55BB4B6E2E19939800311144 /* ExerciseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BB4B6D2E19939800311144 /* ExerciseRepository.swift */; };
+		F9B4E2722E1AAC1D0097A8C0 /* DefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B4E2712E1AAC1D0097A8C0 /* DefaultData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		55BB4B652E19929F00311144 /* SleepRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepRepository.swift; sourceTree = "<group>"; };
 		55BB4B6B2E19936B00311144 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		55BB4B6D2E19939800311144 /* ExerciseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseRepository.swift; sourceTree = "<group>"; };
+		F9B4E2712E1AAC1D0097A8C0 /* DefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 				55BB4B652E19929F00311144 /* SleepRepository.swift */,
 				55BB4B6B2E19936B00311144 /* UserRepository.swift */,
 				55BB4B6D2E19939800311144 /* ExerciseRepository.swift */,
+				F9B4E2712E1AAC1D0097A8C0 /* DefaultData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9B4E2722E1AAC1D0097A8C0 /* DefaultData.swift in Sources */,
 				55BB4B6C2E19936B00311144 /* UserRepository.swift in Sources */,
 				53E5873A2B235E9000E4EF99 /* Persistence.swift in Sources */,
 				53E587712B23714800E4EF99 /* SleepHistoryViewModel.swift in Sources */,

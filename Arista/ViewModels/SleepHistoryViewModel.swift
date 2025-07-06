@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 
 class SleepHistoryViewModel: ObservableObject {
-    @Published var sleepSessions = [FakeSleepSession]()
+    @Published var sleepSessions = [Sleep]()
     
     private var viewContext: NSManagedObjectContext
     
@@ -19,17 +19,12 @@ class SleepHistoryViewModel: ObservableObject {
     }
     
     private func fetchSleepSessions() {
-        
-        sleepSessions = [FakeSleepSession(), 
-                         FakeSleepSession(),
-                         FakeSleepSession(),
-                         FakeSleepSession(),
-                         FakeSleepSession(),
-                         FakeSleepSession(),
-                         FakeSleepSession(),
-                         FakeSleepSession(),
-                         FakeSleepSession(),
-                         FakeSleepSession()]
+        do {
+            let data = SleepRepository(viewContext: viewContext)
+            sleepSessions = try data.getSleepSessions()
+        } catch {
+            
+        }
     }
 }
 
