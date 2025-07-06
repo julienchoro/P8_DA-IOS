@@ -25,7 +25,7 @@ struct AddExerciseView: View {
                             value: $viewModel.duration,
                             in: 0...300)
                     
-                    Stepper("Intensité: \($viewModel.intensity)/10",
+                    Stepper("Intensité: \(viewModel.intensity)/10",
                             value: $viewModel.intensity,
                             in: 0...10)
                 }.formStyle(.grouped)
