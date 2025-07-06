@@ -16,9 +16,18 @@ struct AddExerciseView: View {
             VStack {
                 Form {
                     TextField("Catégorie", text: $viewModel.category)
-                    TextField("Heure de démarrage", text: $viewModel.startTime)
-                    TextField("Durée (en minutes)", text: $viewModel.duration)
-                    TextField("Intensité (0 à 10)", text: $viewModel.intensity)
+                    
+                    DatePicker("Heure de démarrage",
+                               selection: $viewModel.startTime,
+                               displayedComponents: [.date, .hourAndMinute])
+                    
+                    Stepper("Durée: \(viewModel.duration) minutes",
+                            value: $viewModel.duration,
+                            in: 0...300)
+                    
+                    Stepper("Intensité: \($viewModel.intensity)/10",
+                            value: $viewModel.intensity,
+                            in: 0...10)
                 }.formStyle(.grouped)
                 Spacer()
                 Button("Ajouter l'exercice") {

@@ -10,9 +10,9 @@ import CoreData
 
 class AddExerciseViewModel: ObservableObject {
     @Published var category: String = ""
-    @Published var startTime: String = ""
-    @Published var duration: String = ""
-    @Published var intensity: String = ""
+    @Published var startTime: Date = Date()
+    @Published var duration: Int = 0
+    @Published var intensity: Int = 0
 
     private var viewContext: NSManagedObjectContext
 
@@ -25,7 +25,7 @@ class AddExerciseViewModel: ObservableObject {
             try ExerciseRepository(viewContext: viewContext).addExercice(category: category,
                                                                          duration: duration,
                                                                          intensity: intensity,
-                                                                         startDate: Date)
+                                                                         startDate: startTime)
             return true
         } catch {
             return false
