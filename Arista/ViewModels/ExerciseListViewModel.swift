@@ -29,11 +29,11 @@ class ExerciseListViewModel: ObservableObject {
     }
 }
 
-struct FakeExercise: Identifiable {
-    var id = UUID()
-    
-    var category: String = "Football"
-    var duration: Int = 120
-    var intensity: Int = 8
-    var date: Date = Date()
-}
+//struct FakeExercise: Identifiable {
+//    var id = UUID()
+//    
+//    var category: String = "Football"
+//    var duration: Int = 120
+//    var intensity: Int = 8
+//    var date: Date = Date()
+//}
