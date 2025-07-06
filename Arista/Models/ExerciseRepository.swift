@@ -27,6 +27,7 @@ struct ExerciseRepository {
         newExercise.duration = Int64(duration)
         newExercise.intensity = Int64(intensity)
         newExercise.startDate = startDate
+        newExercise.user = try UserRepository(viewContext: viewContext).getUser()
         try viewContext.save()
     }
 }
