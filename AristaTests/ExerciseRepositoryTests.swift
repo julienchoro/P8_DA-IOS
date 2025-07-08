@@ -11,31 +11,34 @@ import CoreData
 @testable import Arista
 
 final class ExerciseRepositoryTests: XCTestCase {
+    
+    var persistenceController: PersistenceController!
+    var repository: ExerciseRepository!
+    var context: NSManagedObjectContext!
 
     override func setUpWithError() throws {
+        persistenceController = PersistenceController(inMemory: true)
+        context = persistenceController.container.viewContext
+        repository = ExerciseRepository(viewContext: context)
+        emptyEntities(context: context)
     }
 
     override func tearDownWithError() throws {
+        persistenceController = nil
+        context = nil
+        repository = nil
     }
     
     func test_WhenNoExerciseIsInDatabase_GetExercise_ReturnEmptyList() {
-        // Clean manually all data
-        let persistenceController = PersistenceController(inMemory: true)
-        emptyEntities(context: persistenceController.container.viewContext)
-        let data = ExerciseRepository(viewContext: persistenceController.container.viewContext)
-        let exercises = try! data.getExercises()
+        let exercises = try! repository.getExercises()
         XCTAssert(exercises.isEmpty == true)
     }
     
     func test_WhenAddingOneExerciseInDatabase_GetExercise_ReturnAListContainingTheExercise() {
-        // Clean manually all data
-        let persistenceController = PersistenceController(inMemory: true)
-        emptyEntities(context: persistenceController.container.viewContext)
         let date = Date()
-        addExercice(context: persistenceController.container.viewContext, category: "Football", duration: 10, intensity: 5, startDate: date, userFirstName: "Eric", userLastName: "Marcus")
+        addExercice(context: context, category: "Football", duration: 10, intensity: 5, startDate: date, userFirstName: "Eric", userLastName: "Marcus")
         
-        let data = ExerciseRepository(viewContext: persistenceController.container.viewContext)
-        let exercises = try! data.getExercises()
+        let exercises = try! repository.getExercises()
         
         XCTAssert(exercises.isEmpty == false)
         XCTAssert(exercises.first?.category == "Football")
@@ -45,28 +48,25 @@ final class ExerciseRepositoryTests: XCTestCase {
     }
     
     func test_WhenAddingMultipleExerciseInDatabase_GetExercise_ReturnAListContainingTheExerciseInTheRightOrder() {
-        // Clean manually all data
-        let persistenceController = PersistenceController(inMemory: true)
-        emptyEntities(context: persistenceController.container.viewContext)
         let date1 = Date()
         let date2 = Date(timeIntervalSinceNow: -(60*60*24))
         let date3 = Date(timeIntervalSinceNow: -(60*60*24*2))
         
-        addExercice(context: persistenceController.container.viewContext,
+        addExercice(context: context,
                     category: "Football",
                     duration: 10,
                     intensity: 5,
                     startDate: date1,
                     userFirstName: "Erica",
                     userLastName: "Marcusi")
-        addExercice(context: persistenceController.container.viewContext,
+        addExercice(context: context,
                     category: "Running",
                     duration: 120,
                     intensity: 1,
                     startDate: date3,
                     userFirstName: "Erice",
                     userLastName: "Marceau")
-        addExercice(context: persistenceController.container.viewContext,
+        addExercice(context: context,
                     category: "Fitness",
                     duration: 30,
                     intensity: 5,
@@ -74,8 +74,7 @@ final class ExerciseRepositoryTests: XCTestCase {
                     userFirstName: "Frédericd",
                     userLastName: "Marcus")
         
-        let data = ExerciseRepository(viewContext: persistenceController.container.viewContext)
-        let exercises = try! data.getExercises()
+        let exercises = try! repository.getExercises()
         
         XCTAssert(exercises.count == 3)
         XCTAssert(exercises[0].category == "Football")
@@ -84,15 +83,11 @@ final class ExerciseRepositoryTests: XCTestCase {
     }
 
     func test_WhenAddingExercice_AddExercise_CreateExerciseInDatabase() throws {
-        let persistenceController = PersistenceController(inMemory: true)
-        emptyEntities(context: persistenceController.container.viewContext)
-        
-        let user = User(context: persistenceController.container.viewContext)
+        let user = User(context: context)
         user.firstName = "Ju"
         user.lastName = "Cho"
-        try persistenceController.container.viewContext.save()
+        try context.save()
         
-        let repository = ExerciseRepository(viewContext: persistenceController.container.viewContext)
         let date = Date()
         
         try repository.addExercice(category: "Running", duration: 10, intensity: 10, startDate: date)
@@ -107,22 +102,17 @@ final class ExerciseRepositoryTests: XCTestCase {
     }
     
     func test_WhenAddingMultipleExercises_AddExercise_CreatesAllExercises() throws {
-        let persistenceController = PersistenceController(inMemory: true)
-        emptyEntities(context: persistenceController.container.viewContext)
-        
-        let user = User(context: persistenceController.container.viewContext)
+        let user = User(context: context)
         user.firstName = "Ju"
         user.lastName = "Cho"
-        try persistenceController.container.viewContext.save()
+        try context.save()
         
-        let repository = ExerciseRepository(viewContext: persistenceController.container.viewContext)
         let date = Date()
         
         try repository.addExercice(category: "Running", duration: 10, intensity: 10, startDate: date)
         try repository.addExercice(category: "Running", duration: 10, intensity: 10, startDate: date)
         try repository.addExercice(category: "Running", duration: 10, intensity: 10, startDate: date)
 
-        
         let exercises = try repository.getExercises()
         XCTAssert(exercises.count == 3)
     }
