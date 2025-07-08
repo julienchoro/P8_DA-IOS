@@ -110,6 +110,33 @@ final class ExerciseListViewModelTests: XCTestCase {
         wait(for: [expectation], timeout: 10)
     }
     
+    func test_WhenReloadingDataFromDatabase_reload_ListIsTheSameOrUpdated() {
+        let persistenceController = PersistenceController(inMemory: true)
+        emptyEntities(context: persistenceController.container.viewContext)
+        let viewModel = ExerciseListViewModel(context: persistenceController.container.viewContext)
+        
+        XCTAssert(viewModel.exercises.isEmpty)
+        
+        viewModel.reload()
+        
+        XCTAssert(viewModel.exercises.isEmpty)
+        
+        let repository = ExerciseRepository(viewContext: persistenceController.container.viewContext)
+        let date = Date()
+        
+        let user = User(context: persistenceController.container.viewContext)
+        user.firstName = "Ju"
+        user.lastName = "Cho"
+        try! persistenceController.container.viewContext.save()
+        
+        try! repository.addExercice(category: "Running", duration: 45, intensity: 3, startDate: date)
+        
+        viewModel.reload()
+        
+        XCTAssert(viewModel.exercises.count == 1)
+        XCTAssert(viewModel.exercises.first?.category == "Running")
+    }
+    
     // MARK: - Utility methods
 
     private func emptyEntities(context: NSManagedObjectContext) {
