@@ -151,10 +151,9 @@
 		53E587452B235E9000E4EF99 /* AristaTests */ = {
 			isa = PBXGroup;
 			children = (
+				556906702E1D95F1005E5452 /* ViewModels */,
+				5569066F2E1D95E5005E5452 /* Repositorys */,
 				53E587462B235E9000E4EF99 /* AristaTests.swift */,
-				F965D35F2E1D60BC00BE8573 /* ExerciseRepositoryTests.swift */,
-				556906692E1D85B8005E5452 /* SleepRepositoryTests.swift */,
-				5569066D2E1D8F2E005E5452 /* UserRepositoryTests.swift */,
 			);
 			path = AristaTests;
 			sourceTree = "<group>";
@@ -197,6 +196,23 @@
 				53E5876A2B23648500E4EF99 /* ExerciseListViewModel.swift */,
 				53E5876E2B236DBC00E4EF99 /* AddExerciseViewModel.swift */,
 				53E587702B23714800E4EF99 /* SleepHistoryViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		5569066F2E1D95E5005E5452 /* Repositorys */ = {
+			isa = PBXGroup;
+			children = (
+				F965D35F2E1D60BC00BE8573 /* ExerciseRepositoryTests.swift */,
+				556906692E1D85B8005E5452 /* SleepRepositoryTests.swift */,
+				5569066D2E1D8F2E005E5452 /* UserRepositoryTests.swift */,
+			);
+			path = Repositorys;
+			sourceTree = "<group>";
+		};
+		556906702E1D95F1005E5452 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
