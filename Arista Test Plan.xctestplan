@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "D22EF466-0944-4896-BDFB-3C2815BAB302",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Arista.xcodeproj",
+        "identifier" : "53E587412B235E9000E4EF99",
+        "name" : "AristaTests"
+      }
+    }
+  ],
+  "version" : 1
+}
