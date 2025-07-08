@@ -27,6 +27,7 @@
 		55BB4B6C2E19936B00311144 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BB4B6B2E19936B00311144 /* UserRepository.swift */; };
 		55BB4B6E2E19939800311144 /* ExerciseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BB4B6D2E19939800311144 /* ExerciseRepository.swift */; };
 		F9B4E2722E1AAC1D0097A8C0 /* DefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B4E2712E1AAC1D0097A8C0 /* DefaultData.swift */; };
+		F9BDEC892E1D5856004A2877 /* ExerciseRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BDEC882E1D5856004A2877 /* ExerciseRepositoryTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		55BB4B6B2E19936B00311144 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		55BB4B6D2E19939800311144 /* ExerciseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseRepository.swift; sourceTree = "<group>"; };
 		F9B4E2712E1AAC1D0097A8C0 /* DefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultData.swift; sourceTree = "<group>"; };
+		F9BDEC882E1D5856004A2877 /* ExerciseRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseRepositoryTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				53E587462B235E9000E4EF99 /* AristaTests.swift */,
+				F9BDEC882E1D5856004A2877 /* ExerciseRepositoryTests.swift */,
 			);
 			path = AristaTests;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				53E587472B235E9000E4EF99 /* AristaTests.swift in Sources */,
+				F9BDEC892E1D5856004A2877 /* ExerciseRepositoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -498,6 +502,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Arista/Preview Content\"";
+				DEVELOPMENT_TEAM = U9WAZ2WFVY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -526,6 +531,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Arista/Preview Content\"";
+				DEVELOPMENT_TEAM = U9WAZ2WFVY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
