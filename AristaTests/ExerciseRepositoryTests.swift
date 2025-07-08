@@ -83,6 +83,50 @@ final class ExerciseRepositoryTests: XCTestCase {
         XCTAssert(exercises[2].category == "Running")
     }
 
+    func test_WhenAddingExercice_AddExercise_CreateExerciseInDatabase() throws {
+        let persistenceController = PersistenceController(inMemory: true)
+        emptyEntities(context: persistenceController.container.viewContext)
+        
+        let user = User(context: persistenceController.container.viewContext)
+        user.firstName = "Ju"
+        user.lastName = "Cho"
+        try persistenceController.container.viewContext.save()
+        
+        let repository = ExerciseRepository(viewContext: persistenceController.container.viewContext)
+        let date = Date()
+        
+        try repository.addExercice(category: "Running", duration: 10, intensity: 10, startDate: date)
+        
+        let exercises = try repository.getExercises()
+        XCTAssert(exercises.count == 1)
+        let exercise = exercises[0]
+        XCTAssert(exercise.category == "Running")
+        XCTAssert(exercise.duration == 10)
+        XCTAssert(exercise.intensity == 10)
+        XCTAssert(exercise.startDate == date)
+    }
+    
+    func test_WhenAddingMultipleExercises_AddExercise_CreatesAllExercises() throws {
+        let persistenceController = PersistenceController(inMemory: true)
+        emptyEntities(context: persistenceController.container.viewContext)
+        
+        let user = User(context: persistenceController.container.viewContext)
+        user.firstName = "Ju"
+        user.lastName = "Cho"
+        try persistenceController.container.viewContext.save()
+        
+        let repository = ExerciseRepository(viewContext: persistenceController.container.viewContext)
+        let date = Date()
+        
+        try repository.addExercice(category: "Running", duration: 10, intensity: 10, startDate: date)
+        try repository.addExercice(category: "Running", duration: 10, intensity: 10, startDate: date)
+        try repository.addExercice(category: "Running", duration: 10, intensity: 10, startDate: date)
+
+        
+        let exercises = try repository.getExercises()
+        XCTAssert(exercises.count == 3)
+    }
+
     // MARK: - Utility methods
     private func emptyEntities(context: NSManagedObjectContext) {
         let fetchRequest = Exercise.fetchRequest()
