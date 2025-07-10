@@ -35,7 +35,7 @@ class AddExerciseViewModel: ObservableObject {
                                                                          startDate: startTime)
             return true
         } catch {
-            print("Erreur lors de l'ajout")
+            print("Error when adding exercise data: \(error)")
             return false
         }
     }
