@@ -17,6 +17,8 @@ struct DefaultData {
     func apply() throws {
         let userRepository = UserRepository(viewContext: viewContext)
         let sleepRepository = SleepRepository(viewContext: viewContext)
+        let exerciceRepository = ExerciseRepository(viewContext: viewContext)
+        
         if (try? userRepository.getUser()) == nil {
             let initialUser = User(context: viewContext)
             initialUser.firstName = "Julien"
@@ -55,6 +57,32 @@ struct DefaultData {
                 sleep5.quality = (0...10).randomElement()!
                 sleep5.startDate = Date(timeIntervalSinceNow: timeIntervalForADay)
                 sleep5.user = initialUser
+            }
+            
+            if try exerciceRepository.getExercises().isEmpty {
+                let exercise1 = Exercise(context: viewContext)
+                let exercise2 = Exercise(context: viewContext)
+                let exercise3 = Exercise(context: viewContext)
+                
+                let timeIntervalForADay: TimeInterval = 60 * 60 * 24
+
+                exercise1.category = "Running"
+                exercise1.duration = (0...200).randomElement()!
+                exercise1.intensity = (0...10).randomElement()!
+                exercise1.startDate = Date(timeIntervalSinceNow: timeIntervalForADay*3)
+                exercise1.user = initialUser
+                
+                exercise2.category = "Football"
+                exercise2.duration = (0...200).randomElement()!
+                exercise2.intensity = (0...10).randomElement()!
+                exercise2.startDate = Date(timeIntervalSinceNow: timeIntervalForADay*3)
+                exercise2.user = initialUser
+                
+                exercise3.category = "Yoga"
+                exercise3.duration = (0...200).randomElement()!
+                exercise3.intensity = (0...10).randomElement()!
+                exercise3.startDate = Date(timeIntervalSinceNow: timeIntervalForADay*3)
+                exercise3.user = initialUser
             }
             
             try? viewContext.save()
