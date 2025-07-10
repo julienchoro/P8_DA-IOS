@@ -21,13 +21,13 @@ class UserDataViewModel: ObservableObject {
 
     private func fetchUserData() {
         do {
-            guard let user = try UserRepository().getUser() else {
+            guard let user = try UserRepository(viewContext: viewContext).getUser() else {
                 fatalError()
             }
             firstName = user.firstName ?? ""
             lastName = user.lastName ?? ""
         } catch {
-            
+            print("Error when fetching user data: \(error)")
         }
     }
 }
