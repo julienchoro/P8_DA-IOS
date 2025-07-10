@@ -27,6 +27,11 @@ final class UserDataViewModelTests: XCTestCase {
         
         emptyUserEntities(context: context)
         
+        let user = User(context: context)
+        user.firstName = "Ju"
+        user.lastName = "Cho"
+        try! context.save()
+                
         viewModel = UserDataViewModel(context: context)
     }
 
@@ -48,14 +53,14 @@ final class UserDataViewModelTests: XCTestCase {
         
         viewModel.$firstName
             .sink { firstName in
-                XCTAssertEqual(firstName, "Julien")
+                XCTAssertEqual(firstName, "Ju")
                 firstNameExpectation.fulfill()
             }
             .store(in: &cancellables)
         
         viewModel.$lastName
             .sink { lastName in
-                XCTAssertEqual(lastName, "Choro")
+                XCTAssertEqual(lastName, "Cho")
                 lastNameExpectation.fulfill()
             }
             .store(in: &cancellables)
