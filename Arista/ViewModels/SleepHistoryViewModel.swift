@@ -23,7 +23,7 @@ class SleepHistoryViewModel: ObservableObject {
             let data = SleepRepository(viewContext: viewContext)
             sleepSessions = try data.getSleepSessions()
         } catch {
-            
+            print("Error when fetching sleep session data: \(error)")
         }
     }
 }
