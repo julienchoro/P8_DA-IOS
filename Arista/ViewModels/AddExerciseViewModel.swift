@@ -18,7 +18,8 @@ class AddExerciseViewModel: ObservableObject {
     var isFormValid: Bool {
         !category.isEmpty &&
         duration > 0 &&
-        startTime <= Date()
+        startTime <= Date() &&
+        intensity >= 0 && intensity <= 10
     }
 
     private var viewContext: NSManagedObjectContext
