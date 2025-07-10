@@ -24,7 +24,7 @@ class ExerciseListViewModel: ObservableObject {
             let data = ExerciseRepository(viewContext: viewContext)
             exercises = try data.getExercises()
         } catch {
-            
+            print("Error when fetching exercise data: \(error)")
         }
     }
     
