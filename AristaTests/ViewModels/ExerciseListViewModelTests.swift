@@ -56,7 +56,7 @@ final class ExerciseListViewModelTests: XCTestCase {
     
     func test_WhenAddingOneExerciseInDatabase_FEtchExercise_ReturnAListContainingTheExercise() {
         let date = Date()
-        addExercice(context: context,
+        addExercise(context: context,
                     category: "Football",
                     duration: 10,
                     intensity: 5,
@@ -87,21 +87,21 @@ final class ExerciseListViewModelTests: XCTestCase {
         let date2 = Date(timeIntervalSinceNow: -(60*60*24))
         let date3 = Date(timeIntervalSinceNow: -(60*60*24*2))
         
-        addExercice(context: context,
+        addExercise(context: context,
                     category: "Football",
                     duration: 10,
                     intensity: 5,
                     startDate: date1,
                     userFirstName: "Ericn",
                     userLastName: "Marcusi")
-        addExercice(context: context,
+        addExercise(context: context,
                     category: "Running",
                     duration: 120,
                     intensity: 1,
                     startDate: date3,
                     userFirstName: "Ericb",
                     userLastName: "Marceau")
-        addExercice(context: context,
+        addExercise(context: context,
                     category: "Fitness",
                     duration: 30,
                     intensity: 5,
@@ -140,7 +140,7 @@ final class ExerciseListViewModelTests: XCTestCase {
         user.lastName = "Cho"
         try! persistenceController.container.viewContext.save()
         
-        try! repository.addExercice(category: "Running", duration: 45, intensity: 3, startDate: date)
+        try! repository.addExercise(category: "Running", duration: 45, intensity: 3, startDate: date)
         
         viewModel.reload()
         
@@ -154,14 +154,14 @@ final class ExerciseListViewModelTests: XCTestCase {
         let fetchRequest = Exercise.fetchRequest()
         let objects = try! context.fetch(fetchRequest)
         
-        for exercice in objects {
-            context.delete(exercice)
+        for exercise in objects {
+            context.delete(exercise)
         }
         
         try! context.save()
     }
     
-    private func addExercice(context: NSManagedObjectContext, category: String, duration: Int, intensity: Int, startDate: Date, userFirstName: String, userLastName: String) {
+    private func addExercise(context: NSManagedObjectContext, category: String, duration: Int, intensity: Int, startDate: Date, userFirstName: String, userLastName: String) {
         let newUser = User(context: context)
         newUser.firstName = userFirstName
         newUser.lastName = userLastName

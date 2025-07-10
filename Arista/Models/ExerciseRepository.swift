@@ -21,7 +21,7 @@ struct ExerciseRepository {
         return try viewContext.fetch(request)
     }
     
-    func addExercice(category: String, duration: Int, intensity: Int, startDate: Date) throws {
+    func addExercise(category: String, duration: Int, intensity: Int, startDate: Date) throws {
         let newExercise = Exercise(context: viewContext)
         newExercise.category = category
         newExercise.duration = Int64(duration)

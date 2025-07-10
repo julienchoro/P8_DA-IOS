@@ -36,7 +36,7 @@ final class ExerciseRepositoryTests: XCTestCase {
     
     func test_WhenAddingOneExerciseInDatabase_GetExercise_ReturnAListContainingTheExercise() {
         let date = Date()
-        addExercice(context: context, category: "Football", duration: 10, intensity: 5, startDate: date, userFirstName: "Eric", userLastName: "Marcus")
+        addExercise(context: context, category: "Football", duration: 10, intensity: 5, startDate: date, userFirstName: "Eric", userLastName: "Marcus")
         
         let exercises = try! repository.getExercises()
         
@@ -52,21 +52,21 @@ final class ExerciseRepositoryTests: XCTestCase {
         let date2 = Date(timeIntervalSinceNow: -(60*60*24))
         let date3 = Date(timeIntervalSinceNow: -(60*60*24*2))
         
-        addExercice(context: context,
+        addExercise(context: context,
                     category: "Football",
                     duration: 10,
                     intensity: 5,
                     startDate: date1,
                     userFirstName: "Erica",
                     userLastName: "Marcusi")
-        addExercice(context: context,
+        addExercise(context: context,
                     category: "Running",
                     duration: 120,
                     intensity: 1,
                     startDate: date3,
                     userFirstName: "Erice",
                     userLastName: "Marceau")
-        addExercice(context: context,
+        addExercise(context: context,
                     category: "Fitness",
                     duration: 30,
                     intensity: 5,
@@ -82,7 +82,7 @@ final class ExerciseRepositoryTests: XCTestCase {
         XCTAssert(exercises[2].category == "Running")
     }
 
-    func test_WhenAddingExercice_AddExercise_CreateExerciseInDatabase() throws {
+    func test_WhenAddingExercise_AddExercise_CreateExerciseInDatabase() throws {
         let user = User(context: context)
         user.firstName = "Ju"
         user.lastName = "Cho"
@@ -90,7 +90,7 @@ final class ExerciseRepositoryTests: XCTestCase {
         
         let date = Date()
         
-        try repository.addExercice(category: "Running", duration: 10, intensity: 10, startDate: date)
+        try repository.addExercise(category: "Running", duration: 10, intensity: 10, startDate: date)
         
         let exercises = try repository.getExercises()
         XCTAssert(exercises.count == 1)
@@ -109,9 +109,9 @@ final class ExerciseRepositoryTests: XCTestCase {
         
         let date = Date()
         
-        try repository.addExercice(category: "Running", duration: 10, intensity: 10, startDate: date)
-        try repository.addExercice(category: "Running", duration: 10, intensity: 10, startDate: date)
-        try repository.addExercice(category: "Running", duration: 10, intensity: 10, startDate: date)
+        try repository.addExercise(category: "Running", duration: 10, intensity: 10, startDate: date)
+        try repository.addExercise(category: "Running", duration: 10, intensity: 10, startDate: date)
+        try repository.addExercise(category: "Running", duration: 10, intensity: 10, startDate: date)
 
         let exercises = try repository.getExercises()
         XCTAssert(exercises.count == 3)
@@ -122,14 +122,14 @@ final class ExerciseRepositoryTests: XCTestCase {
         let fetchRequest = Exercise.fetchRequest()
         let objects = try! context.fetch(fetchRequest)
         
-        for exercice in objects {
-            context.delete(exercice)
+        for exercise in objects {
+            context.delete(exercise)
         }
         
         try! context.save()
     }
     
-    private func addExercice(context: NSManagedObjectContext, category: String, duration: Int, intensity: Int, startDate: Date, userFirstName: String, userLastName: String) {
+    private func addExercise(context: NSManagedObjectContext, category: String, duration: Int, intensity: Int, startDate: Date, userFirstName: String, userLastName: String) {
         let newUser = User(context: context)
         newUser.firstName = userFirstName
         newUser.lastName = userLastName

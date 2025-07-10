@@ -17,7 +17,7 @@ struct DefaultData {
     func apply() throws {
         let userRepository = UserRepository(viewContext: viewContext)
         let sleepRepository = SleepRepository(viewContext: viewContext)
-        let exerciceRepository = ExerciseRepository(viewContext: viewContext)
+        let exerciseRepository = ExerciseRepository(viewContext: viewContext)
         
         if (try? userRepository.getUser()) == nil {
             let initialUser = User(context: viewContext)
@@ -59,7 +59,7 @@ struct DefaultData {
                 sleep5.user = initialUser
             }
             
-            if try exerciceRepository.getExercises().isEmpty {
+            if try exerciseRepository.getExercises().isEmpty {
                 let exercise1 = Exercise(context: viewContext)
                 let exercise2 = Exercise(context: viewContext)
                 let exercise3 = Exercise(context: viewContext)

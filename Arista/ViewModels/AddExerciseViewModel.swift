@@ -29,7 +29,7 @@ class AddExerciseViewModel: ObservableObject {
 
     func addExercise() -> Bool {
         do {
-            try ExerciseRepository(viewContext: viewContext).addExercice(category: category,
+            try ExerciseRepository(viewContext: viewContext).addExercise(category: category,
                                                                          duration: duration,
                                                                          intensity: intensity,
                                                                          startDate: startTime)
