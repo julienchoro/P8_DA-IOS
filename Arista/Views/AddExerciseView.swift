@@ -22,7 +22,6 @@ struct AddExerciseView: View {
                             Text(category).tag(category)
                         }
                     }
-                    TextField("Catégorie", text: $viewModel.category)
                     
                     DatePicker("Heure de démarrage",
                                selection: $viewModel.startTime,
