@@ -35,10 +35,8 @@ extension PersistenceController {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
         
-        try! DefaultData(viewContext: viewContext).apply()
-
         do {
-            try viewContext.save()
+            try DefaultData(viewContext: viewContext).apply()
         } catch {
             let nsError = error as NSError
             print("Preview data setup error: \(error)")
