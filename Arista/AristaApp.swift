@@ -25,12 +25,17 @@ struct AristaApp: App {
                     Label("Utilisateur", systemImage: "person")
                 }
                 
-                ExerciseListView(viewModel: ExerciseListViewModel(context: persistenceController.container.viewContext))
-                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                    .tabItem {
-                        Label("Exercices", systemImage: "flame")
-                    }
-                
+                ExerciseListView(viewModel: ExerciseListViewModel(
+                        repository: ExerciseRepository(
+                                viewContext: persistenceController.container.viewContext
+                        )
+                    )
+                )
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .tabItem {
+                    Label("Exercices", systemImage: "flame")
+                }
+            
                 SleepHistoryView(viewModel: SleepHistoryViewModel(
                     repository: SleepRepository(
                         viewContext: persistenceController.container.viewContext

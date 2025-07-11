@@ -26,7 +26,7 @@ final class ExerciseListViewModelTests: XCTestCase {
         context = persistenceController.container.viewContext
         repository = ExerciseRepository(viewContext: context)
         
-        viewModel = ExerciseListViewModel(context: context)
+        viewModel = ExerciseListViewModel(repository: repository)
         
         emptyEntities(context: context)
     }

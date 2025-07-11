@@ -30,7 +30,7 @@ final class AddExerciseViewModelTests: XCTestCase {
         user.lastName = "Cho"
         try! context.save()
         
-        viewModel = AddExerciseViewModel(context: context)
+        viewModel = AddExerciseViewModel(repository: ExerciseRepository(viewContext: context))
     }
 
     override func tearDownWithError() throws {

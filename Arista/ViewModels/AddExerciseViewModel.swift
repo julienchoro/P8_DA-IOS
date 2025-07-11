@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import CoreData
 
 class AddExerciseViewModel: ObservableObject {
     let catégories = ["Football", "Natation", "Running", "Marche", "Cyclisme", "Fitness", "Yoga", "Musculation"]
@@ -22,18 +21,18 @@ class AddExerciseViewModel: ObservableObject {
         intensity >= 0 && intensity <= 10
     }
 
-    private var viewContext: NSManagedObjectContext
+    private var repository: ExerciseRepository
 
-    init(context: NSManagedObjectContext) {
-        self.viewContext = context
+    init(repository: ExerciseRepository) {
+        self.repository = repository
     }
 
     func addExercise() -> Bool {
         do {
-            try ExerciseRepository(viewContext: viewContext).addExercise(category: category,
-                                                                         duration: duration,
-                                                                         intensity: intensity,
-                                                                         startDate: startTime)
+            try repository.addExercise(category: category,
+                                       duration: duration,
+                                       intensity: intensity,
+                                       startDate: startTime)
             return true
         } catch {
             print("Error when adding exercise data: \(error)")

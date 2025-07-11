@@ -7,21 +7,18 @@
 
 import Foundation
 
-import CoreData
-
 class ExerciseListViewModel: ObservableObject {
     @Published var exercises = [ExerciseData]()
 
-    var viewContext: NSManagedObjectContext
+    var repository: ExerciseRepository
 
-    init(context: NSManagedObjectContext) {
-        self.viewContext = context
+    init(repository: ExerciseRepository) {
+        self.repository = repository
         fetchExercises()
     }
 
     private func fetchExercises() {
         do {
-            let repository = ExerciseRepository(viewContext: viewContext)
             exercises = try repository.getExerciseData()
         } catch {
             print("Error when fetching exercise data: \(error)")
