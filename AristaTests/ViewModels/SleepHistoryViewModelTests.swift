@@ -27,7 +27,7 @@ final class SleepHistoryViewModelTests: XCTestCase {
         
         emptyEntities(context: context)
         
-        viewModel = SleepHistoryViewModel(context: context)
+        viewModel = SleepHistoryViewModel(repository: repository)
     }
 
     override func tearDownWithError() throws {
@@ -59,7 +59,7 @@ final class SleepHistoryViewModelTests: XCTestCase {
         let date = Date()
         addSleepSession(context: context, duration: 420, quality: 8, startDate: date, userFirstName: "Ju", userLastName: "Cho")
         
-        viewModel = SleepHistoryViewModel(context: context)
+        viewModel = SleepHistoryViewModel(repository: repository)
         
         viewModel.$sleepSessions
             .sink { sleepSessions in
@@ -97,11 +97,11 @@ final class SleepHistoryViewModelTests: XCTestCase {
                         userFirstName: "Ju",
                         userLastName: "Cho")
         
-        viewModel = SleepHistoryViewModel(context: context)
+        viewModel = SleepHistoryViewModel(repository: repository)
         
         let expectation = XCTestExpectation(description: "fetch list with one sleep session")
                 
-        viewModel = SleepHistoryViewModel(context: context)
+        viewModel = SleepHistoryViewModel(repository: repository)
         
         viewModel.$sleepSessions
             .sink { sleepSessions in

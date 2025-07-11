@@ -32,7 +32,7 @@ final class UserDataViewModelTests: XCTestCase {
         user.lastName = "Cho"
         try! context.save()
                 
-        viewModel = UserDataViewModel(context: context)
+        viewModel = UserDataViewModel(repository: repository)
     }
 
     override func tearDownWithError() throws {
@@ -46,7 +46,7 @@ final class UserDataViewModelTests: XCTestCase {
     }
     
     func test_WhenUserExistInDatabase_FetchUserData_LoadsUserData() {
-        viewModel = UserDataViewModel(context: context)
+        viewModel = UserDataViewModel(repository: repository)
         
         let firstNameExpectation = expectation(description: "Fetch user first name")
         let lastNameExpectation = expectation(description: "Fetch user last name")

@@ -31,12 +31,17 @@ struct AristaApp: App {
                         Label("Exercices", systemImage: "flame")
                     }
                 
-                SleepHistoryView(viewModel: SleepHistoryViewModel(context: persistenceController.container.viewContext))
-                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                    .tabItem {
-                        Label("Sommeil", systemImage: "moon")
-                    }
-                
+                SleepHistoryView(viewModel: SleepHistoryViewModel(
+                    repository: SleepRepository(
+                        viewContext: persistenceController.container.viewContext
+                        )
+                    )
+                )
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .tabItem {
+                    Label("Sommeil", systemImage: "moon")
+                }
+
             }
         }
     }
