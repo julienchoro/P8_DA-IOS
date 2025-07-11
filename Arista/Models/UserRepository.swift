@@ -15,10 +15,20 @@ struct UserRepository {
         self.viewContext = viewContext
     }
     
-    func getUser() throws -> User? {
+    func getUserCoreData() throws -> User? {
         let request = User.fetchRequest()
         request.fetchLimit = 1
         return try viewContext.fetch(request).first
+    }
+    
+    func getUserData() throws -> UserData? {
+        guard let user = try getUserCoreData() else {
+            return nil
+        }
+        
+        return UserData(firstName: user.firstName ?? "",
+                        lastName: user.lastName ?? "")
+        
     }
     
 }

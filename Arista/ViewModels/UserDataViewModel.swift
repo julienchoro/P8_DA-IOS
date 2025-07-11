@@ -21,9 +21,9 @@ class UserDataViewModel: ObservableObject {
 
     private func fetchUserData() {
         do {
-            if let user = try UserRepository(viewContext: viewContext).getUser() {
-                firstName = user.firstName ?? ""
-                lastName = user.lastName ?? ""
+            if let user = try UserRepository(viewContext: viewContext).getUserData() {
+                firstName = user.firstName
+                lastName = user.lastName
             } else {
                 print("No user found in database, using default values")
                 firstName = "default"

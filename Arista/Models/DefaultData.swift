@@ -19,7 +19,7 @@ struct DefaultData {
         let sleepRepository = SleepRepository(viewContext: viewContext)
         let exerciseRepository = ExerciseRepository(viewContext: viewContext)
         
-        if (try? userRepository.getUser()) == nil {
+        if (try? userRepository.getUserData()) == nil {
             let initialUser = User(context: viewContext)
             initialUser.firstName = "Julien"
             initialUser.lastName = "Choro"

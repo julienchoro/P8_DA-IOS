@@ -30,7 +30,7 @@ final class UserRepositoryTests: XCTestCase {
     }
 
     func test_WhenNoUserInDatabse_getUser_ReturnNoUser() throws {
-        let user = try repository.getUser()
+        let user = try repository.getUserData()
         XCTAssert(user == nil)
     }
     
@@ -40,7 +40,7 @@ final class UserRepositoryTests: XCTestCase {
         testUser.lastName = "Cho"
         try context.save()
         
-        let user = try repository.getUser()
+        let user = try repository.getUserData()
         
         XCTAssert(user != nil)
         XCTAssert(user?.firstName == "Ju")
