@@ -30,13 +30,13 @@ final class SleepRepositoryTests: XCTestCase {
     }
     
     func test_WhenNoSleepSessionInDatabase_getSleepSessions_ReturnEmptyList() {
-        let sleepSessions = try! sleepRepository.getSleepSessions()
+        let sleepSessions = try! sleepRepository.getSleepData()
         XCTAssert(sleepSessions.count == 0)
     }
     
     func test_WhenOneSleepSessionInDatabase_getSleepSessions_ReturnListContainingTheSleepSession() {
         addSleepSession(context: context, duration: 120, quality: 80, startDate: Date(), userFirstName: "Ju", userLastName: "Cho")
-        let sleepSessions = try! sleepRepository.getSleepSessions()
+        let sleepSessions = try! sleepRepository.getSleepData()
         XCTAssert(sleepSessions.count == 1)
     }
     
@@ -49,7 +49,7 @@ final class SleepRepositoryTests: XCTestCase {
         addSleepSession(context: context, duration: 520, quality: 6, startDate: date2, userFirstName: "Ju", userLastName: "Cho")
         addSleepSession(context: context, duration: 320, quality: 3, startDate: date3, userFirstName: "Ju", userLastName: "Cho")
         
-        let sleepSessions = try! sleepRepository.getSleepSessions()
+        let sleepSessions = try! sleepRepository.getSleepData()
         XCTAssert(sleepSessions.count == 3)
         XCTAssert(sleepSessions[0].startDate == date1)
         XCTAssert(sleepSessions[1].startDate == date2)

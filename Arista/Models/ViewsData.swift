@@ -12,3 +12,11 @@ struct UserData {
     let firstName: String
     let lastName: String
 }
+
+// MARK: - Sleep Data
+struct SleepData: Identifiable {
+    let id = UUID()
+    let duration: Int
+    let quality: Int
+    let startDate: Date
+}

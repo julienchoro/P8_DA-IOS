@@ -24,7 +24,7 @@ struct DefaultData {
             initialUser.firstName = "Julien"
             initialUser.lastName = "Choro"
             
-            if try sleepRepository.getSleepSessions().isEmpty {
+            if try sleepRepository.getSleepData().isEmpty {
                 let sleep1 = Sleep(context: viewContext)
                 let sleep2 = Sleep(context: viewContext)
                 let sleep3 = Sleep(context: viewContext)

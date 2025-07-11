@@ -14,10 +14,10 @@ struct SleepHistoryView: View {
         NavigationView {
             List(viewModel.sleepSessions) { session in
                 HStack {
-                    QualityIndicator(quality: Int(session.quality))
+                    QualityIndicator(quality: session.quality)
                         .padding()
                     VStack(alignment: .leading) {
-                        Text("Début : \(session.startDate?.formatted() ?? "Date non disponible")")
+                        Text("Début : \(session.startDate.formatted())")
                         Text("Durée : \(session.duration/60) heures")
                     }
                 }
