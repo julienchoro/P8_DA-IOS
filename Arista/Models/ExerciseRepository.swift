@@ -42,7 +42,7 @@ struct ExerciseRepository {
         newExercise.duration = Int64(duration)
         newExercise.intensity = Int64(intensity)
         newExercise.startDate = startDate
-        
+
         let user = try UserRepository(viewContext: viewContext).getUserData()
         newExercise.user?.firstName = user?.firstName
         newExercise.user?.lastName = user?.lastName

@@ -14,11 +14,16 @@ struct AristaApp: App {
     var body: some Scene {
         WindowGroup {
             TabView {
-                UserDataView(viewModel: UserDataViewModel(context: persistenceController.container.viewContext))
-                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                    .tabItem {
-                        Label("Utilisateur", systemImage: "person")
-                    }
+                UserDataView(viewModel: UserDataViewModel(
+                    repository: UserRepository(
+                        viewContext: persistenceController.container.viewContext
+                        )
+                    )
+                )
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .tabItem {
+                    Label("Utilisateur", systemImage: "person")
+                }
                 
                 ExerciseListView(viewModel: ExerciseListViewModel(context: persistenceController.container.viewContext))
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)

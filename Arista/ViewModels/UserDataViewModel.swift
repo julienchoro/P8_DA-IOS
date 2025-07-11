@@ -6,22 +6,21 @@
 //
 
 import Foundation
-import CoreData
 
 class UserDataViewModel: ObservableObject {
     @Published var firstName: String = ""
     @Published var lastName: String = ""
 
-    private var viewContext: NSManagedObjectContext
+    private let repository: UserRepository
 
-    init(context: NSManagedObjectContext) {
-        self.viewContext = context
+    init(repository: UserRepository) {
+        self.repository = repository
         fetchUserData()
     }
 
     private func fetchUserData() {
         do {
-            if let user = try UserRepository(viewContext: viewContext).getUserData() {
+            if let user = try repository.getUserData() {
                 firstName = user.firstName
                 lastName = user.lastName
             } else {

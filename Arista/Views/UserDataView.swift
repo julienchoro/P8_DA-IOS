@@ -29,5 +29,10 @@ struct UserDataView: View {
 }
 
 #Preview {
-    UserDataView(viewModel: UserDataViewModel(context: PersistenceController.preview.container.viewContext))
+    UserDataView(viewModel: UserDataViewModel(
+        repository: UserRepository(
+            viewContext: PersistenceController.preview.container.viewContext
+            )
+        )
+    )
 }
