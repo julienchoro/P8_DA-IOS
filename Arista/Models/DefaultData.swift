@@ -59,7 +59,7 @@ struct DefaultData {
                 sleep5.user = initialUser
             }
             
-            if try exerciseRepository.getExercises().isEmpty {
+            if try exerciseRepository.getExerciseData().isEmpty {
                 let exercise1 = Exercise(context: viewContext)
                 let exercise2 = Exercise(context: viewContext)
                 let exercise3 = Exercise(context: viewContext)

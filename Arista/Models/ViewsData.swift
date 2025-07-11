@@ -20,3 +20,12 @@ struct SleepData: Identifiable {
     let quality: Int
     let startDate: Date
 }
+
+// MARK: - Exercise Data
+struct ExerciseData: Identifiable {
+    let id = UUID()
+    let category: String
+    let duration: Int     // en minutes
+    let intensity: Int    // de 0 à 10
+    let startDate: Date
+}

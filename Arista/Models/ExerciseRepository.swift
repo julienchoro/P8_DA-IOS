@@ -15,10 +15,25 @@ struct ExerciseRepository {
         self.viewContext = viewContext
     }
     
-    func getExercises() throws -> [Exercise] {
+    func getExercisesCoreData() throws -> [Exercise] {
         let request = Exercise.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(SortDescriptor<Exercise>(\.startDate, order: .reverse))]
         return try viewContext.fetch(request)
+    }
+    
+    func getExerciseData() throws -> [ExerciseData] {
+        let exercises = try getExercisesCoreData()
+        
+        var exerciseData: [ExerciseData] = []
+        
+        for exercise in exercises {
+            exerciseData.append(ExerciseData(category: exercise.category ?? "",
+                                             duration: Int(exercise.duration),
+                                             intensity: Int(exercise.intensity),
+                                             startDate: exercise.startDate ?? Date()))
+        }
+        
+        return exerciseData
     }
     
     func addExercise(category: String, duration: Int, intensity: Int, startDate: Date) throws {

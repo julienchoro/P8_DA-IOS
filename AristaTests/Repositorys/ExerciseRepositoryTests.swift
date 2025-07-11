@@ -30,7 +30,7 @@ final class ExerciseRepositoryTests: XCTestCase {
     }
     
     func test_WhenNoExerciseIsInDatabase_GetExercise_ReturnEmptyList() {
-        let exercises = try! repository.getExercises()
+        let exercises = try! repository.getExerciseData()
         XCTAssert(exercises.isEmpty == true)
     }
     
@@ -38,7 +38,7 @@ final class ExerciseRepositoryTests: XCTestCase {
         let date = Date()
         addExercise(context: context, category: "Football", duration: 10, intensity: 5, startDate: date, userFirstName: "Eric", userLastName: "Marcus")
         
-        let exercises = try! repository.getExercises()
+        let exercises = try! repository.getExerciseData()
         
         XCTAssert(exercises.isEmpty == false)
         XCTAssert(exercises.first?.category == "Football")
@@ -74,7 +74,7 @@ final class ExerciseRepositoryTests: XCTestCase {
                     userFirstName: "Frédericd",
                     userLastName: "Marcus")
         
-        let exercises = try! repository.getExercises()
+        let exercises = try! repository.getExerciseData()
         
         XCTAssert(exercises.count == 3)
         XCTAssert(exercises[0].category == "Football")
@@ -92,7 +92,7 @@ final class ExerciseRepositoryTests: XCTestCase {
         
         try repository.addExercise(category: "Running", duration: 10, intensity: 10, startDate: date)
         
-        let exercises = try repository.getExercises()
+        let exercises = try repository.getExerciseData()
         XCTAssert(exercises.count == 1)
         let exercise = exercises[0]
         XCTAssert(exercise.category == "Running")
@@ -113,7 +113,7 @@ final class ExerciseRepositoryTests: XCTestCase {
         try repository.addExercise(category: "Running", duration: 10, intensity: 10, startDate: date)
         try repository.addExercise(category: "Running", duration: 10, intensity: 10, startDate: date)
 
-        let exercises = try repository.getExercises()
+        let exercises = try repository.getExerciseData()
         XCTAssert(exercises.count == 3)
     }
 

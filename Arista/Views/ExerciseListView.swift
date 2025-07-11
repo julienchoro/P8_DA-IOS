@@ -15,13 +15,13 @@ struct ExerciseListView: View {
         NavigationView {
             List(viewModel.exercises) { exercise in
                 HStack {
-                    Image(systemName: iconForCategory(exercise.category ?? ""))
+                    Image(systemName: iconForCategory(exercise.category))
                     VStack(alignment: .leading) {
-                        Text(exercise.category ?? "Catégorie non définie")
+                        Text(exercise.category)
                             .font(.headline)
                         Text("Durée: \(exercise.duration) min")
                             .font(.subheadline)
-                        Text(exercise.startDate?.formatted() ?? "Date non définie")
+                        Text(exercise.startDate.formatted())
                             .font(.subheadline)
                         
                     }

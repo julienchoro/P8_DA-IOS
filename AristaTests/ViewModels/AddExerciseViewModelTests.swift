@@ -85,7 +85,7 @@ final class AddExerciseViewModelTests: XCTestCase {
         
         // Vérifier que l'exercice a bien été ajouté
         let repository = ExerciseRepository(viewContext: context)
-        let exercises = try! repository.getExercises()
+        let exercises = try! repository.getExerciseData()
         
         XCTAssertEqual(exercises.count, 1)
         XCTAssertEqual(exercises.first?.category, "Yoga")
